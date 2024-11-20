@@ -1,21 +1,31 @@
+html {
+  transition: background-color 0.5s, color 0.5s;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .theme-background {
+    @apply bg-background text-text;
   }
-}
+  .dark .theme-background {
+    @apply bg-dark-background text-dark-text;
+  }
+  .yellow-mode .theme-background {
+    @apply bg-yellowMode-background text-yellowMode-text;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .theme-accent {
+    @apply bg-accent;
+  }
+
+  .dark .theme-accent {
+    @apply bg-dark-accent;
+  }
+
+  .yellow-mode .theme-accent {
+    @apply bg-yellowMode-accent;
+  }
 }

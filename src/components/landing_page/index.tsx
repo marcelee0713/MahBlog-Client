@@ -10,7 +10,7 @@ interface props {
   animation: unknown;
 }
 
-export const Content: React.FC<props> = ({ animation }) => {
+export const LandingPageContent: React.FC<props> = ({ animation }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
@@ -19,6 +19,8 @@ export const Content: React.FC<props> = ({ animation }) => {
   let direction: 1 | -1 = 1;
 
   const onJSONLoad = () => {
+    if (targetRef.current?.textContent !== "") return;
+
     if (targetRef.current)
       TypewriterEffect(targetRef.current, "MahBlog", 150, onFinishType);
   };

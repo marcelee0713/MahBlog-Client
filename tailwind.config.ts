@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#F4F4F4",
+        background: "#FFFFFF",
         text: "#393E41",
-        accent: "#E6E6E6",
+        accent: "#F6F6F6",
 
         yellowMode: {
           background: "#FDF6E3",
@@ -38,6 +38,10 @@ export default {
         animFullHeight: "fullHeight 1.2s ease-in",
         animFullWidth: "fullWidth 0.7s ease-in forwards",
         wiggle: "wiggle 1s ease-in-out infinite",
+      },
+      boxShadow: {
+        leftLetterShadow: "-8px 8px 0px 0px",
+        rightLetterShadow: "8px 8px 0px 0px",
       },
       keyframes: {
         wiggle: {

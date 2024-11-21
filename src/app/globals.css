@@ -7,6 +7,7 @@ html {
 @tailwind utilities;
 
 @layer utilities {
+  /* For Auto background color change using their primary color*/
   .theme-background {
     @apply bg-background text-text;
   }
@@ -17,6 +18,7 @@ html {
     @apply bg-yellowMode-background text-yellowMode-text;
   }
 
+  /* For Auto background color change using their accent color*/
   .theme-accent {
     @apply bg-accent;
   }
@@ -29,6 +31,7 @@ html {
     @apply bg-yellowMode-accent;
   }
 
+  /* For Auto background color change using their text color*/
   .theme-bg-text-color {
     @apply bg-text;
   }
@@ -39,5 +42,17 @@ html {
 
   .yellow-mode .theme-bg-text-color {
     @apply bg-text;
+  }
+
+  .theme-border {
+    @apply border border-accent;
+  }
+
+  .dark .theme-border {
+    @apply border border-dark-accent;
+  }
+
+  .yellow-mode .theme-border {
+    @apply border border-yellowMode-accent;
   }
 }

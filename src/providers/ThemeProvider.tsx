@@ -10,7 +10,6 @@ const ThemeProviderWrapper = ({ children }: Props) => {
     <ThemeProvider
       attribute="class"
       defaultTheme="light"
-      enableSystem={false}
       value={{
         light: "light",
         dark: "dark",

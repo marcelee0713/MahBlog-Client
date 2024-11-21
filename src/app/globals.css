@@ -28,4 +28,16 @@ html {
   .yellow-mode .theme-accent {
     @apply bg-yellowMode-accent;
   }
+
+  .theme-bg-text-color {
+    @apply bg-text;
+  }
+
+  .dark .theme-bg-text-color {
+    @apply bg-dark-text;
+  }
+
+  .yellow-mode .theme-bg-text-color {
+    @apply bg-text;
+  }
 }

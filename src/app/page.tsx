@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 export default function Home() {
   return (
     <div className="">
-      <div className="h-10 w-10 theme-accent font-openSans ">Hello</div>
+      <div className="h-10 w-10 theme-accent font-openSans">Hello</div>
 
       <div className="!bg-red-700 w-4 h-4 font-openSans">HELLO</div>
 

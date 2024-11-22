@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${sourceSerif4.variable} antialiased theme-background h-screen w-full font-openSans`}
+        className={`${openSans.variable} ${sourceSerif4.variable} antialiased h-screen w-full font-openSans`}
       >
         <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
       </body>

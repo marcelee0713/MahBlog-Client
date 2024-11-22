@@ -1,10 +1,13 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="">
+      <button onClick={() => router.push("/landing")}> go to landing </button>
       <div className="h-10 w-10 theme-accent font-openSans">Hello</div>
 
       <div className="!bg-red-700 w-4 h-4 font-openSans">HELLO</div>

@@ -1,11 +1,12 @@
 import type { Config } from "tailwindcss";
-import type { PluginAPI } from "tailwindcss/types/config"; // Import the PluginAPI type
+import type { PluginAPI } from "tailwindcss/types/config";
 
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -13,17 +14,20 @@ export default {
         background: "#FFFFFF",
         text: "#393E41",
         accent: "#F6F6F6",
+        textAccent: "#75787B",
 
         yellowMode: {
           background: "#FDF6E3",
           text: "#393E41",
           accent: "#ECE2CE",
+          textAccent: "#75787B",
         },
 
         dark: {
           background: "#393E41",
           text: "#F4F4F4",
           accent: "#2E3437",
+          textAccent: "#B3B3B3",
         },
       },
       fontFamily: {

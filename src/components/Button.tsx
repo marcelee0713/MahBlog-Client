@@ -2,14 +2,16 @@ import React from "react";
 
 interface props {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "submit" | "reset" | "button";
 }
 
-export const Button: React.FC<props> = ({ text, onClick }) => {
+export const Button: React.FC<props> = ({ text, onClick, type }) => {
   return (
     <button
       onClick={onClick}
-      className="flex items-center justify-center theme-border font-medium rounded-xl w-full p-3 "
+      type={type}
+      className="flex items-center justify-center theme-border font-medium rounded-xl w-full p-3 hover:theme-accent transition-colors duration-300 ease-out h-[50px]"
     >
       {text}
     </button>

@@ -6,8 +6,25 @@ html {
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    background-color: #ffffff;
+    color: #393e41;
+  }
+
+  .dark {
+    background-color: #393e41;
+    color: #ffffff;
+  }
+
+  .yellow-mode {
+    background-color: #fdf6e3;
+    color: #393e41;
+  }
+}
+
 @layer utilities {
-  /* For Auto background color change using their primary color*/
+  /* For Auto background color change using their primary color */
   .theme-background {
     @apply bg-background text-text;
   }
@@ -18,7 +35,19 @@ html {
     @apply bg-yellowMode-background text-yellowMode-text;
   }
 
-  /* For Auto background color change using their accent color*/
+  .theme-background-color {
+    @apply bg-background;
+  }
+
+  .dark .theme-background-color {
+    @apply bg-dark-background;
+  }
+
+  .yellow-mode .theme-background-color {
+    @apply bg-yellowMode-background;
+  }
+
+  /* For Auto background color change using their accent color */
   .theme-accent {
     @apply bg-accent;
   }
@@ -31,7 +60,7 @@ html {
     @apply bg-yellowMode-accent;
   }
 
-  /* For Auto background color change using their text color*/
+  /* For Auto background color change using their text color */
   .theme-bg-text-color {
     @apply bg-text;
   }
@@ -44,6 +73,7 @@ html {
     @apply bg-text;
   }
 
+  /* For auto border by using themes */
   .theme-border {
     @apply border border-accent;
   }
@@ -54,5 +84,34 @@ html {
 
   .yellow-mode .theme-border {
     @apply border border-yellowMode-accent;
+  }
+
+  /* For auto text accent color */
+  .theme-accent-text-color {
+    @apply text-textAccent;
+  }
+
+  .dark .theme-accent-text-color {
+    @apply text-dark-textAccent;
+  }
+
+  .yellow-mode .theme-accent-text-color {
+    @apply text-yellowMode-textAccent;
+  }
+
+  .default-input-border {
+    @apply bg-transparent outline-none font-medium flex-1 py-3 px-3 theme-border rounded-xl focus:border-2 cursor-input;
+  }
+
+  .default-input-label {
+    @apply absolute px-1 -top-[10px] left-3 theme-background-color group-focus-within:font-bold;
+  }
+
+  .cursor-input {
+    @apply cursor-default;
+  }
+
+  .dark .cursor-input {
+    @apply cursor-text;
   }
 }

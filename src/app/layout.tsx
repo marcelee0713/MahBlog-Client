@@ -1,42 +1,42 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ThemeProviderWrapper from "@/providers/ThemeProvider";
+import ThemeProviderWrapper from "@/components/providers/ThemeProvider";
 
 const openSans = localFont({
   src: [
     {
-      path: "./fonts/open_sans/OpenSans-ExtraBold.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-ExtraBold.ttf",
       weight: "800",
     },
     {
-      path: "./fonts/open_sans/OpenSans-ExtraBoldItalic.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-ExtraBoldItalic.ttf",
       weight: "800",
       style: "italic",
     },
     {
-      path: "./fonts/open_sans/OpenSans-Bold.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-Bold.ttf",
       weight: "700",
     },
     {
-      path: "./fonts/open_sans/OpenSans-BoldItalic.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-BoldItalic.ttf",
       weight: "700",
       style: "italic",
     },
     {
-      path: "./fonts/open_sans/OpenSans-Medium.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-Medium.ttf",
       weight: "500",
     },
     {
-      path: "./fonts/open_sans/OpenSans-Regular.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-Regular.ttf",
       weight: "400",
     },
     {
-      path: "./fonts/open_sans/OpenSans-Light.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-Light.ttf",
       weight: "300",
     },
     {
-      path: "./fonts/open_sans/OpenSans-Italic.ttf",
+      path: "../../public/fonts/open_sans/OpenSans-Italic.ttf",
       weight: "400",
       style: "italic",
     },
@@ -47,7 +47,7 @@ const openSans = localFont({
 const sourceSerif4 = localFont({
   src: [
     {
-      path: "./fonts/source_serif_4/SourceSerif4-Bold.ttf",
+      path: "../../public/fonts/source_serif_4/SourceSerif4-Bold.ttf",
       weight: "700",
     },
   ],

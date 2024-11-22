@@ -6,6 +6,7 @@ export const RoutesArr = [
   "Signin",
   "SignUp",
   "About",
+  "ForgotPass",
   "ResetPass",
 ] as const;
 
@@ -16,5 +17,6 @@ export const ROUTES: Record<Routes, string> = {
   Signin: "/sign-in",
   SignUp: "/sign-up",
   About: "/about",
+  ForgotPass: "/forgot-password",
   ResetPass: "/reset-password",
 };

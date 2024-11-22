@@ -1,5 +1,5 @@
-import { SignInPageContent } from "@/components/auth/sign_in_page";
-import animation from "../../../../public/SignInPageAnimation.json";
+import { SignInPageContent } from "@/features/auth/sign-in/SignInForm";
+import animation from "../../../../public/lottie/SignInPageAnimation.json";
 
 export default function SignInPage() {
   return (

@@ -3,8 +3,7 @@
 import { TypewriterEffect } from "@/utils";
 import React, { useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
-import { ROUTES } from "@/constants";
-import Link from "next/link";
+import { RoutesSelection } from "./RoutesSelection";
 
 interface props {
   animation: unknown;
@@ -61,26 +60,7 @@ export const LandingPageContent: React.FC<props> = ({ animation }) => {
         <div ref={descRef} className="text-xl h-fit"></div>
       </div>
 
-      <div
-        className={`flex gap-2 justify-around w-full items-center font-bold ${
-          animate ? "animate-animfadeAbove visible" : "invisible"
-        }`}
-      >
-        <Link href={ROUTES["Home"]} className="relative group">
-          Read
-          <div className="absolute h-[2px] group-hover:w-full theme-bg-text-color w-0 duration-700"></div>
-        </Link>
-
-        <Link href={ROUTES["Signin"]} className="relative group">
-          Sign In
-          <div className="absolute h-[2px] group-hover:w-full theme-bg-text-color w-0 duration-700"></div>
-        </Link>
-
-        <Link href={ROUTES["About"]} className="relative group">
-          About
-          <div className="absolute h-[2px] group-hover:w-full theme-bg-text-color w-0 duration-700"></div>
-        </Link>
-      </div>
+      <RoutesSelection animate={animate} />
     </div>
   );
 };

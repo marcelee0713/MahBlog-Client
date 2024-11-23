@@ -1,5 +1,6 @@
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
+import { Toaster } from "sonner";
 
 interface Props {
   children: ReactNode;
@@ -16,6 +17,12 @@ const ThemeProviderWrapper = ({ children }: Props) => {
         yellow: "yellow-mode",
       }}
     >
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          className: "theme-background theme-border",
+        }}
+      />
       {children}
     </ThemeProvider>
   );

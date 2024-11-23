@@ -1,5 +1,5 @@
 import { z, ZodType } from "zod";
-import { SignInFormData } from "../interfaces/sign-in-interface";
+import { SignInFormData } from "../ts/interfaces/sign-in-interface";
 
 export const SignInSchema: ZodType<SignInFormData> = z.object({
   email: z

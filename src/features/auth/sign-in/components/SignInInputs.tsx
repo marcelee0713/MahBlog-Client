@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { SignInFormData } from "../interfaces/sign-in-interface";
+import { SignInFormData } from "../ts/interfaces/sign-in-interface";
 import { IoEyeOff, IoEye } from "react-icons/io5";
 
 interface props {

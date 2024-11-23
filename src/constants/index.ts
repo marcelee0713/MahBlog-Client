@@ -1,4 +1,4 @@
-import { Routes } from "@/types";
+import { Routes } from "@/ts/types/global";
 
 export const RoutesArr = [
   "Home",

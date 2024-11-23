@@ -1,15 +1,43 @@
 import { Button } from "@/components/Button";
 import { UnderLineButton } from "@/components/UnderLineButton";
 import { ROUTES } from "@/constants";
-import React from "react";
-import { SignInFormData } from "../interfaces/sign-in-interface";
+import React, { useState } from "react";
+import { SignInFormData } from "../ts/interfaces/sign-in-interface";
 import { SignInSchema } from "../schemas/sign-in-schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailInput, PasswordInput } from "./SignInInputs";
+import { CallbacksInterface } from "@/ts/interfaces/global";
+import { signInUser } from "../api/sign-in-api";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-// TODO: Integrate the API call here
 export const SignInForm = () => {
+  const router = useRouter();
+
+  const [processing, setProcessing] = useState(false);
+
+  const cb: CallbacksInterface = {
+    onLoading() {
+      setProcessing(true);
+      toast.dismiss();
+      toast.loading("Loading...");
+    },
+
+    onSuccess(data) {
+      setProcessing(false);
+      toast.dismiss();
+      console.log(data);
+      router.push(ROUTES["Home"]);
+    },
+
+    onError(err) {
+      setProcessing(false);
+      toast.dismiss();
+      toast.error(err.message);
+    },
+  };
+
   const {
     register,
     handleSubmit,
@@ -20,9 +48,7 @@ export const SignInForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit((data) => {
-        console.log(data);
-      })}
+      onSubmit={handleSubmit(async (data) => await signInUser(data, cb))}
       className="flex flex-col gap-5"
     >
       <div className="flex flex-col gap-10">
@@ -33,14 +59,14 @@ export const SignInForm = () => {
 
           <div className="w-fit text-sm ml-3">
             <UnderLineButton
-              onClick={() => ROUTES["ForgotPass"]}
+              onClick={() => router.push(ROUTES["ForgotPass"])}
               text="Forgot Password?"
             />
           </div>
         </div>
       </div>
 
-      <Button text="Sign in" type="submit" />
+      <Button text="Sign in" type="submit" disabled={processing} />
     </form>
   );
 };

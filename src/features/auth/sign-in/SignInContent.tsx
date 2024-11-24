@@ -33,7 +33,7 @@ export const SignInContent: React.FC<props> = ({ animation }) => {
 
         <Divider middleText="OR" />
 
-        <GoogleButton onClick={() => {}} />
+        <GoogleButton />
 
         <AbsoluteButton
           onClick={() => router.push(ROUTES["SignUp"])}

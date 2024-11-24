@@ -23,6 +23,34 @@ export const TypewriterEffect = (
   type();
 };
 
+export const SendErrorResponse = async (
+  status: number,
+  body: ErrorObject
+): Promise<Response> => {
+  const error: ErrorResponse = {
+    status,
+    error: body,
+    timestamp: new Date(),
+  };
+
+  return new Response(JSON.stringify(error), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const ParseRawError = async (res: Response): Promise<Response> => {
+  const errorResponse = await res.text();
+  return new Response(errorResponse, {
+    status: res.status,
+    headers: {
+      "Content-Type": res.headers.get("Content-Type") || "application/json",
+    },
+  });
+};
+
 export const ParseError = async (res: Response): Promise<ErrorObject> => {
   if (res.status === 429) {
     const obj: ErrorObject = {

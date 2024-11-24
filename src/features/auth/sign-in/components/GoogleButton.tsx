@@ -1,15 +1,15 @@
+import apiUrl from "@/config";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-interface props {
-  onClick: () => void;
-}
+export const GoogleButton = () => {
+  const router = useRouter();
 
-export const GoogleButton: React.FC<props> = ({ onClick }) => {
   return (
     <button
-      onClick={onClick}
-      className="flex items-center justify-center theme-border font-medium rounded-xl w-full p-3 gap-2"
+      onClick={() => router.push(`${apiUrl}/user/google`)}
+      className="flex items-center justify-center theme-border font-medium rounded-xl w-full p-3 gap-2 disabled:cursor-not-allowed"
     >
       <FcGoogle size={20} />
 

@@ -24,10 +24,13 @@ export const SignInForm = () => {
       toast.loading("Loading...");
     },
 
-    onSuccess(data) {
+    onSuccess() {
       setProcessing(false);
       toast.dismiss();
-      console.log(data);
+
+      // TODO: Mutate the User Provider Data here, when we have one now.
+
+      // Then...
       router.push(ROUTES["Home"]);
     },
 

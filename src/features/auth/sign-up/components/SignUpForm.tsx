@@ -28,7 +28,7 @@ export const SignUpForm = () => {
       setProcessing(false);
       toast.dismiss();
 
-      router.push(ROUTES["Welcome"]);
+      router.replace(`${ROUTES["Welcome"]}?name=${getValues("firstName")}`);
     },
 
     onError(err) {
@@ -41,6 +41,7 @@ export const SignUpForm = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpSchema),

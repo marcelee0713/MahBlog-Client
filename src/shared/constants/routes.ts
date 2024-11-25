@@ -8,6 +8,7 @@ export const RoutesArr = [
   "About",
   "ForgotPass",
   "ResetPass",
+  "Welcome",
 ] as const;
 
 //TODO: Update this regularly.
@@ -19,4 +20,5 @@ export const ROUTES: Record<Routes, string> = {
   About: "/about",
   ForgotPass: "/forgot-password",
   ResetPass: "/reset-password",
+  Welcome: "/welcome",
 };

@@ -9,7 +9,7 @@ export const GoogleButton = () => {
   return (
     <button
       onClick={() => router.push(`${apiUrl}/user/google`)}
-      className="flex items-center justify-center theme-border font-medium rounded-xl w-full p-3 gap-2 disabled:cursor-not-allowed"
+      className="flex items-center justify-center theme-border font-medium rounded-xl w-full p-3 gap-2 disabled:cursor-not-allowed hover:theme-accent transition-colors duration-300 ease-out"
     >
       <FcGoogle size={20} />
 

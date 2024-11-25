@@ -18,7 +18,11 @@ export async function GET() {
     method: "GET",
   });
 
-  if (!res.ok) return await ParseRawError(res);
+  if (!res.ok) {
+    if (res.status === 404 || res.status === 410) cookieStore.delete("token");
+
+    return await ParseRawError(res);
+  }
 
   const newToken = res.headers.get("Authorization")?.split(" ")[1];
 

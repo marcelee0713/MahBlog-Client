@@ -50,6 +50,8 @@ export const SignInForm = () => {
       toast.error(
         "Please sign in using your email and password, as your account was created through the traditional sign-in method."
       );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {

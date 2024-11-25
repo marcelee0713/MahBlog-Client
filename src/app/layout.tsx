@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ThemeProviderWrapper from "@/components/providers/ThemeProvider";
+import GlobalProvider from "@/components/providers/GlobalProvider";
 
 const openSans = localFont({
   src: [
@@ -69,7 +69,7 @@ export default function RootLayout({
       <body
         className={`${openSans.variable} ${sourceSerif4.variable} antialiased h-screen w-full font-openSans`}
       >
-        <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+        <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
   );

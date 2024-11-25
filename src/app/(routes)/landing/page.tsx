@@ -1,5 +1,5 @@
-import json from "../../../public/lottie/LandingPageAnimation.json";
-import { LandingPageContent } from "@/components/landing/landing_page";
+import json from "../../../../public/lottie/LandingPageAnimation.json";
+import { LandingPageContent } from "@/components/landing/LandingPageContent";
 
 export default function LandingPage() {
   return (

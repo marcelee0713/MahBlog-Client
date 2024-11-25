@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/shared/constants/routes";
 import Lottie from "lottie-react";
 import React from "react";
 import { AuthDescription } from "../components/AuthDescription";

@@ -1,5 +1,5 @@
 import apiUrl from "@/config";
-import { SendErrorResponse } from "@/utils";
+import { SendErrorResponse } from "@/shared/utils";
 import { cookies } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 import { NextRequest } from "next/server";

@@ -1,6 +1,6 @@
 import { SignInFormData } from "../ts/interfaces/sign-in-interface";
-import { CallbacksInterface } from "@/ts/interfaces/global";
-import { ParseError } from "@/utils";
+import { CallbacksInterface } from "@/shared/ts/interfaces/global";
+import { ParseError } from "@/shared/utils";
 
 export const signInUser = async (
   data: SignInFormData,

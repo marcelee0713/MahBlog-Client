@@ -1,4 +1,4 @@
-import { ErrorObject, ErrorResponse } from "@/ts/interfaces/global";
+import { ErrorObject, ErrorResponse } from "@/shared/ts/interfaces/global";
 
 export const TypewriterEffect = (
   element: HTMLElement | null,

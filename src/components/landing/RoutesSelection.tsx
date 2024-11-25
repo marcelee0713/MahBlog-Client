@@ -1,4 +1,4 @@
-import { ROUTES } from "@/constants";
+import { ROUTES } from "@/shared/constants/routes";
 import React from "react";
 import { UnderLineButton } from "../UnderLineButton";
 import { useRouter } from "next/navigation";

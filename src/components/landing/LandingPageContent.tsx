@@ -1,6 +1,6 @@
 "use client";
 
-import { TypewriterEffect } from "@/utils";
+import { TypewriterEffect } from "@/shared/utils";
 import React, { useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import { RoutesSelection } from "./RoutesSelection";

@@ -1,5 +1,5 @@
 import { SignInContent } from "@/features/auth/sign-in/SignInContent";
-import animation from "../../../../public/lottie/SignInPageAnimation.json";
+import animation from "../../../../../public/lottie/SignInPageAnimation.json";
 
 export default function SignInPage() {
   return (

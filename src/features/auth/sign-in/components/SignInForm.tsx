@@ -1,21 +1,26 @@
 import { Button } from "@/components/Button";
 import { UnderLineButton } from "@/components/UnderLineButton";
-import { ROUTES } from "@/constants";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SignInFormData } from "../ts/interfaces/sign-in-interface";
 import { SignInSchema } from "../schemas/sign-in-schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EmailInput, PasswordInput } from "./SignInInputs";
-import { CallbacksInterface } from "@/ts/interfaces/global";
 import { signInUser } from "../api/sign-in-api";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { mutate } from "swr";
+import { ROUTES } from "@/shared/constants/routes";
+import { CallbacksInterface } from "@/shared/ts/interfaces/global";
 
 export const SignInForm = () => {
   const router = useRouter();
 
+  const params = useSearchParams();
+
   const [processing, setProcessing] = useState(false);
+
+  const code = params.get("error") === "wrong-authentication-type";
 
   const cb: CallbacksInterface = {
     onLoading() {
@@ -24,13 +29,12 @@ export const SignInForm = () => {
       toast.loading("Loading...");
     },
 
-    onSuccess() {
+    async onSuccess() {
       setProcessing(false);
       toast.dismiss();
 
-      // TODO: Mutate the User Provider Data here, when we have one now.
+      await mutate("/api/user");
 
-      // Then...
       router.push(ROUTES["Home"]);
     },
 
@@ -40,6 +44,13 @@ export const SignInForm = () => {
       toast.error(err.message);
     },
   };
+
+  useEffect(() => {
+    if (code)
+      toast.error(
+        "Please sign in using your email and password, as your account was created through the traditional sign-in method."
+      );
+  }, []);
 
   const {
     register,

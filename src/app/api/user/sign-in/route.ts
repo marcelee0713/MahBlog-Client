@@ -1,6 +1,6 @@
 import apiUrl from "@/config";
 import { SignInFormData } from "@/features/auth/sign-in/ts/interfaces/sign-in-interface";
-import { ParseRawError, SendErrorResponse } from "@/utils";
+import { ParseRawError, SendErrorResponse } from "@/shared/utils";
 import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 

@@ -12,6 +12,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { mutate } from "swr";
 import { ROUTES } from "@/shared/constants/routes";
 import { CallbacksInterface } from "@/shared/ts/interfaces/global";
+import { reqEmailVerification } from "../api/req-email-verif-api";
+import { ReqEmailVerifyBody } from "../ts/interfaces/req-email-verif-interface";
 
 export const SignInForm = () => {
   const router = useRouter();
@@ -21,6 +23,24 @@ export const SignInForm = () => {
   const [processing, setProcessing] = useState(false);
 
   const code = params.get("error") === "wrong-authentication-type";
+
+  const emailCallback: CallbacksInterface = {
+    onLoading() {
+      setProcessing(true);
+      toast.dismiss();
+      toast.loading("Sending...");
+    },
+    onError(result) {
+      setProcessing(false);
+      toast.dismiss();
+      toast.error(result.message);
+    },
+    onSuccess() {
+      setProcessing(false);
+      toast.dismiss();
+      toast.success("Email verification sent");
+    },
+  };
 
   const cb: CallbacksInterface = {
     onLoading() {
@@ -40,9 +60,32 @@ export const SignInForm = () => {
 
     onError(err) {
       setProcessing(false);
+
+      if (err.code === "user-not-verified") return userNotVerified(err.message);
+
       toast.dismiss();
       toast.error(err.message);
     },
+  };
+
+  const userNotVerified = (msg: string) => {
+    const body: ReqEmailVerifyBody = {
+      email: getValues("email"),
+      useCase: "VERIFY_EMAIL",
+    };
+
+    toast.dismiss();
+
+    toast.error(msg, {
+      description:
+        "Would you like to send us another email verification request?",
+      action: {
+        label: "Yes",
+        onClick: async () => reqEmailVerification(body, emailCallback),
+      },
+      closeButton: true,
+      duration: 10000, // <- in milliseconds (10 seconds).
+    });
   };
 
   useEffect(() => {
@@ -57,6 +100,7 @@ export const SignInForm = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm<SignInFormData>({
     resolver: zodResolver(SignInSchema),

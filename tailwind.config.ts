@@ -49,8 +49,8 @@ export default {
       },
       keyframes: {
         wiggle: {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
+          "0%, 100%": { transform: "rotate(-50deg)" },
+          "50%": { transform: "rotate(45deg)" },
         },
         fadeAbove: {
           "100%": { transform: "translateY(0px)", opacity: "1" },

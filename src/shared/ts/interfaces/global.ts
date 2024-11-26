@@ -20,6 +20,6 @@ export interface ErrorResponse {
 
 export interface CallbacksInterface {
   onLoading: () => void;
-  onSuccess: <T>(data: T) => Promise<void>;
+  onSuccess: <T>(data: T) => Promise<void> | void;
   onError: (err: ErrorObject) => void;
 }

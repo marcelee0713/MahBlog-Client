@@ -1,5 +1,5 @@
 import { MainAuthLayout } from "@/features/auth/components/AuthLayout";
-import animation from "../../../../public/lottie/SignInPageAnimation.json";
+import animation from "../../../../../public/lottie/SignInPageAnimation.json";
 
 export default function AuthLayout({
   children,

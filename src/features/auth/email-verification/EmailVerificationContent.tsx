@@ -60,7 +60,10 @@ export const EmailVerificationContent = () => {
       <div className="flex text-sm gap-1 font-bold self-center">
         <div className="font-light">Something went wrong?</div>
 
-        <UnderLineButton onClick={() => ROUTES["Report"]} text="Report it" />
+        <UnderLineButton
+          onClick={() => ROUTES["Report"]}
+          text="Send us a report"
+        />
       </div>
     </div>
   );

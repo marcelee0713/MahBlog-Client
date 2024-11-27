@@ -64,7 +64,7 @@ export const ForgotPassForm = ({ setState, onFound }: props) => {
     >
       <EmailInput errors={errors} register={register} />
 
-      <Button text="Sign in" type="submit" disabled={processing} />
+      <Button text="Submit" type="submit" disabled={processing} />
     </form>
   );
 };

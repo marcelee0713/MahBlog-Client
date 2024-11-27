@@ -1,7 +1,8 @@
 "use client";
 
 import useUserStore from "@/shared/model/store";
-import { ReactNode } from "react";
+import { generateDeviceUUID } from "@/shared/api/device.api";
+import { ReactNode, useEffect } from "react";
 import { SWRConfig } from "swr/_internal";
 import ThemeProviderWrapper from "./ThemeProvider";
 
@@ -13,6 +14,10 @@ const GlobalProvider = ({ children }: Props) => {
   const fetchUser = useUserStore((state) => state.useFetchUser);
 
   fetchUser();
+
+  useEffect(() => {
+    generateDeviceUUID();
+  }, []);
 
   return (
     <SWRConfig>

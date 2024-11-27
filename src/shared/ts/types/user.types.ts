@@ -6,6 +6,7 @@ export const UpdateUserUseCaseArr = [
   "CHANGE_PASSWORD",
   "CHANGE_EMAIL",
   "VERIFY_EMAIL",
+  "VERIFY_EMAIL_BY_TOKEN",
   "RESET_PASSWORD",
 ] as const;
 

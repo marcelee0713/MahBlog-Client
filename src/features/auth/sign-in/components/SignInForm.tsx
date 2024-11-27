@@ -12,8 +12,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { mutate } from "swr";
 import { ROUTES } from "@/shared/constants/routes";
 import { CallbacksInterface } from "@/shared/ts/interfaces/global";
-import { reqEmailVerification } from "../api/req-email-verif-api";
-import { ReqEmailVerifyBody } from "../ts/interfaces/req-email-verif-interface";
+import { reqEmailVerification } from "../../shared/api/req-email-verif-api";
+import { ReqEmailVerifyBody } from "../../shared/ts/interfaces/req-email-verif-interface";
 
 export const SignInForm = () => {
   const router = useRouter();

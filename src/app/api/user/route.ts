@@ -9,16 +9,23 @@ export async function GET() {
 
   const token = cookieStore.get("token")?.value ?? "";
 
+  const deviceId = cookieStore.get("device-id")?.value ?? "";
+
   const res = await fetch(`${apiUrl}/user/`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Device-ID": `${deviceId}`,
     },
     mode: "cors",
     method: "GET",
   });
 
   if (!res.ok) {
+    if (res.status === 401) {
+      //TODO: Redirect the user to the device-verification
+    }
+
     if (res.status === 404 || res.status === 410) cookieStore.delete("token");
 
     return await ParseRawError(res);

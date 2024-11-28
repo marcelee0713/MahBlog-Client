@@ -20,6 +20,8 @@ export async function GET(req: NextRequest) {
 
   const currentToken = cookieStore.get("token");
 
+  //TODO: Create a route for storing the DeviceId in the database since this is the final stage of OAuth.
+
   if (currentToken) {
     try {
       const response = await fetch(`${apiUrl}/user/sign-out`, {
@@ -39,7 +41,7 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  (await cookies()).set("token", token, {
+  cookieStore.set("token", token, {
     httpOnly: true,
     maxAge: 30 * 24 * 60 * 60,
     secure: process.env.NODE_ENV === "production",

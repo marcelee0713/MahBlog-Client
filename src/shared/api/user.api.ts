@@ -1,3 +1,4 @@
+import { ErrorResponse } from "../ts/interfaces/global";
 import { User } from "../ts/interfaces/user.interface";
 
 export const getUser = async (route: string): Promise<User | null> => {
@@ -8,7 +9,11 @@ export const getUser = async (route: string): Promise<User | null> => {
     },
   });
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    const resObj: ErrorResponse = await res.json();
+
+    throw resObj.error;
+  }
 
   const data: User = await res.json();
 

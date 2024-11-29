@@ -22,18 +22,22 @@ export async function GET() {
   });
 
   if (!res.ok) {
-    if (res.status === 401) {
-      //TODO: Redirect the user to the device-verification
-    }
-
-    if (res.status === 404 || res.status === 410) cookieStore.delete("token");
+    if (res.status === 404 || res.status === 410 || res.status === 401)
+      cookieStore.delete("token");
 
     return await ParseRawError(res);
   }
 
   const newToken = res.headers.get("Authorization")?.split(" ")[1];
 
-  if (newToken) cookieStore.set("token", newToken);
+  if (newToken)
+    cookieStore.set("token", newToken, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+    });
   else console.warn("Unexpected Error: new token not set.");
 
   const body: ResponseBody<User> = await res.json();

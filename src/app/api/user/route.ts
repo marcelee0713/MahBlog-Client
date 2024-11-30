@@ -22,8 +22,8 @@ export async function GET() {
   });
 
   if (!res.ok) {
-    if (res.status === 404 || res.status === 410 || res.status === 401)
-      cookieStore.delete("token");
+    // When the session is not found or expired.
+    if (res.status === 404 || res.status === 410) cookieStore.delete("token");
 
     return await ParseRawError(res);
   }

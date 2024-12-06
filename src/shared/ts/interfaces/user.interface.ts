@@ -2,9 +2,10 @@ import { Roles, Status } from "../types/user.types";
 
 export interface UserState {
   user: User | null;
-  setUser: (user: User) => void;
-  useFetchUser: () => void;
+  setUser: (user: User | null) => void;
   clearUser: () => void;
+  toggleFetch: (toggle: boolean) => void;
+  canFetch: boolean;
 }
 
 export interface User {
@@ -14,4 +15,21 @@ export interface User {
   status: Status;
   emailVerifiedAt: Date | null;
   createdAt: Date;
+}
+
+export interface UserProfileState {
+  profile: UserProfile | null;
+  setProfile: (profile: UserProfile | null) => void;
+  clearUserProfile: () => void;
+}
+
+export interface UserProfile {
+  profileId: string | null;
+  userId: string | null;
+  firstName: string;
+  middleName: null;
+  lastName: string | null;
+  profilePicture: string | null;
+  profileCover: string | null;
+  bio: string | null;
 }

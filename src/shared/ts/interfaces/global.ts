@@ -1,3 +1,6 @@
+import { IconType } from "react-icons";
+import { Routes } from "../types/global";
+
 export interface ResponseBody<T> {
   status: number;
   data: T;
@@ -22,4 +25,12 @@ export interface CallbacksInterface {
   onLoading: () => void;
   onSuccess: <T>(data: T) => Promise<void> | void;
   onError: (err: ErrorObject) => void;
+}
+
+export interface IconRoute {
+  text: string;
+  route: Routes;
+  icon: IconType;
+  onClick?: () => void;
+  className?: string;
 }

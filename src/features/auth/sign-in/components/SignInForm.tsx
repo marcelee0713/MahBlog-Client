@@ -9,14 +9,16 @@ import { EmailInput, PasswordInput } from "./SignInInputs";
 import { signInUser } from "../api/sign-in-api";
 import { toast } from "sonner";
 import { useRouter, useSearchParams } from "next/navigation";
-import { mutate } from "swr";
 import { ROUTES } from "@/shared/constants/routes";
 import { CallbacksInterface } from "@/shared/ts/interfaces/global";
 import { reqEmailVerification } from "../../shared/api/req-email-verif-api";
 import { ReqEmailVerifyBody } from "../../shared/ts/interfaces/req-email-verif-interface";
+import useUser from "@/shared/hooks/user";
 
 export const SignInForm = () => {
   const router = useRouter();
+
+  const { fetchUser, toggleFetch } = useUser();
 
   const params = useSearchParams();
 
@@ -53,9 +55,11 @@ export const SignInForm = () => {
       setProcessing(false);
       toast.dismiss();
 
-      await mutate("/api/user");
+      toggleFetch(true);
 
-      router.push(ROUTES["Home"]);
+      await fetchUser();
+
+      return router.push(ROUTES["Home"]);
     },
 
     onError(err) {

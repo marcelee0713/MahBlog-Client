@@ -9,8 +9,11 @@ import { toast } from "sonner";
 import { redirect, useSearchParams } from "next/navigation";
 import { CodeInput } from "./DeviceVerifInput";
 import { verifyUserDevice } from "../api/device-verif-api";
+import useUser from "@/shared/hooks/user";
 
 export const DeviceVerifForm = () => {
+  const { fetchUser, toggleFetch } = useUser();
+
   const params = useSearchParams();
 
   const token = params.get("token") ?? "";
@@ -25,10 +28,15 @@ export const DeviceVerifForm = () => {
       toast.loading("Loading...");
     },
 
-    onSuccess() {
+    async onSuccess() {
       setProcessing(false);
       toast.dismiss();
       toast.success("Successfully verified!");
+
+      toggleFetch(true);
+
+      await fetchUser();
+
       redirect("/");
     },
 

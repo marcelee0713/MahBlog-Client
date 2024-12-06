@@ -41,6 +41,7 @@ export default {
         animfadeRightSide: "fadeRightSide 1.2s ease-in",
         animFullHeight: "fullHeight 1.2s ease-in",
         animFullWidth: "fullWidth 0.7s ease-in forwards",
+        animFadeIn: "fadeIn 0.7s ease-in",
         wiggle: "wiggle 1s ease-in-out infinite",
       },
       boxShadow: {
@@ -51,6 +52,12 @@ export default {
         wiggle: {
           "0%, 100%": { transform: "rotate(-50deg)" },
           "50%": { transform: "rotate(45deg)" },
+        },
+        fadeIn: {
+          "100%": { opacity: "1" },
+          "0%": {
+            opacity: "0",
+          },
         },
         fadeAbove: {
           "100%": { transform: "translateY(0px)", opacity: "1" },

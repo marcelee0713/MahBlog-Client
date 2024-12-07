@@ -1,8 +1,7 @@
 import { UpdateUserUseCase } from "@/shared/ts/types/user.types";
 
 export interface ResetPassFormData {
-  currentPassword: string;
-  password: string;
+  newPassword: string;
   cfrmPassword: string;
 }
 

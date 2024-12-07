@@ -1,4 +1,4 @@
-import { Roles, Status } from "../types/user.types";
+import { AuthenticatedAs, Roles, Status } from "../types/user.types";
 
 export interface UserState {
   user: User | null;
@@ -15,6 +15,7 @@ export interface User {
   status: Status;
   emailVerifiedAt: Date | null;
   createdAt: Date;
+  authenticatedAs: AuthenticatedAs;
 }
 
 export interface UserProfileState {
@@ -27,7 +28,7 @@ export interface UserProfile {
   profileId: string | null;
   userId: string | null;
   firstName: string;
-  middleName: null;
+  middleName: string | null;
   lastName: string | null;
   profilePicture: string | null;
   profileCover: string | null;

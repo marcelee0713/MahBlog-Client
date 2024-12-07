@@ -1,4 +1,4 @@
-import { IconRouteButton } from "@/components/IconButton";
+import { IconRouteButton } from "@/components/IconRouteButton";
 import { signOutUser } from "@/shared/api/user.api";
 import { ROUTES, USER_POP_UP_ROUTES } from "@/shared/constants/routes";
 import useUser from "@/shared/hooks/user";

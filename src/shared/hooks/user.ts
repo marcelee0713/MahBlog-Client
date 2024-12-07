@@ -13,6 +13,7 @@ const useUser = () => {
     {
       refreshInterval: 60000,
       revalidateOnFocus: false,
+      revalidateOnMount: !user,
       onSuccess(data) {
         setUser(data);
       },

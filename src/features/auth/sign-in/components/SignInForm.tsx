@@ -84,10 +84,13 @@ export const SignInForm = () => {
       description:
         "Would you like to send us another email verification request?",
       action: {
+        label: "No",
+        onClick: () => toast.dismiss(),
+      },
+      cancel: {
         label: "Yes",
         onClick: async () => reqEmailVerification(body, emailCallback),
       },
-      closeButton: true,
       duration: 10000, // <- in milliseconds (10 seconds).
     });
   };

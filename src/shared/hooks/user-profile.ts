@@ -14,6 +14,7 @@ const useProfile = (user: User | null) => {
     {
       revalidateOnFocus: false,
       shouldRetryOnError: false,
+      revalidateOnMount: !profile,
       onSuccess(data) {
         setProfile(data);
       },

@@ -1,30 +1,16 @@
-import { ROUTES } from "@/shared/constants/routes";
-import { IconRoute } from "@/shared/ts/interfaces/global";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { IconButtonType } from "@/shared/ts/interfaces/global";
 import React from "react";
 
-export const IconRouteButton: React.FC<IconRoute> = ({
+export const IconButton: React.FC<IconButtonType> = ({
   icon: Icon,
-  route,
   text,
   onClick,
   className,
 }) => {
-  const currentRoute = usePathname().split("/")[1].toLowerCase();
-
-  const onTheSameRoute = currentRoute === route.toLowerCase();
-
   return (
-    <Link
-      href={ROUTES[route]}
-      onClick={onClick}
-      className={`icon-button-style ${className} ${
-        onTheSameRoute && "!theme-accent"
-      }`}
-    >
+    <button onClick={onClick} className={`icon-button-style ${className}`}>
       <Icon size={20} />
       <div className="text-sm">{text}</div>
-    </Link>
+    </button>
   );
 };

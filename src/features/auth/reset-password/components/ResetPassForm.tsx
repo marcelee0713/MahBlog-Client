@@ -35,12 +35,6 @@ export const ResetPassForm = () => {
     onError(err) {
       setProcessing(false);
 
-      if (err.code === "user-current-password-does-not-match") {
-        toast.dismiss();
-        setError("currentPassword", { message: err.message });
-        return;
-      }
-
       toast.dismiss();
       toast.error(err.message);
     },
@@ -49,7 +43,6 @@ export const ResetPassForm = () => {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm<ResetPassFormData>({
     resolver: zodResolver(ResetPassSchema),
@@ -73,15 +66,8 @@ export const ResetPassForm = () => {
       <ResetPasswordInput
         errors={errors}
         register={register}
-        label="Current Password"
-        registerName="currentPassword"
-      />
-
-      <ResetPasswordInput
-        errors={errors}
-        register={register}
         label="New Password"
-        registerName="password"
+        registerName="newPassword"
       />
 
       <ResetPasswordInput

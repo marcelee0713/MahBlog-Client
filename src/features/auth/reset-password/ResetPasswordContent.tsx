@@ -16,7 +16,7 @@ export const ResetPasswordContent = () => {
     <div className="relative flex-1 flex flex-col gap-7 px-5 py-4 justify-center">
       <AuthDescription
         text="Reset Password"
-        subText="Enter your current and new password"
+        subText="Enter your new password"
       />
 
       <ResetPassForm />

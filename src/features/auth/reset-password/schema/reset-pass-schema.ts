@@ -6,10 +6,7 @@ const passRegExp =
 
 export const ResetPassSchema: ZodType<ResetPassFormData> = z
   .object({
-    currentPassword: z
-      .string()
-      .min(1, { message: "Please provide your current password" }),
-    password: z
+    newPassword: z
       .string()
       .min(1, { message: "Please provide a password" })
       .min(8, { message: "Password must contain at least 8 character(s)" })
@@ -22,7 +19,7 @@ export const ResetPassSchema: ZodType<ResetPassFormData> = z
       .min(5, { message: "This field must contain at least 8 character(s)" })
       .max(20),
   })
-  .refine((data) => data.password === data.cfrmPassword, {
+  .refine((data) => data.newPassword === data.cfrmPassword, {
     message: "Passwords do not match",
     path: ["cfrmPassword"],
   });

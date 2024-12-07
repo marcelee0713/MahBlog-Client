@@ -1,6 +1,6 @@
 import React from "react";
 import { UserProfile } from "@/shared/ts/interfaces/user.interface";
-import { IconRouteButton } from "@/components/IconButton";
+import { IconRouteButton } from "@/components/IconRouteButton";
 import { QUICK_ACTION_ROUTES } from "@/shared/constants/routes";
 
 interface props {

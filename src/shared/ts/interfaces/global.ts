@@ -34,3 +34,7 @@ export interface IconRoute {
   onClick?: () => void;
   className?: string;
 }
+
+export type IconButtonType = Omit<IconRoute, "route"> & {
+  onClick: () => void;
+};

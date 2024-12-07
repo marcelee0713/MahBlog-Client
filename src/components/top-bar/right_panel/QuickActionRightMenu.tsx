@@ -3,7 +3,7 @@ import { MenuRoutes } from "./RightPanelRoutes";
 import { UserButton } from "./UserButton";
 import useUser from "@/shared/hooks/user";
 import useProfile from "@/shared/hooks/user-profile";
-import { IconRouteButton } from "@/components/IconButton";
+import { IconRouteButton } from "@/components/IconRouteButton";
 import { HiOutlineLogin } from "react-icons/hi";
 
 export const QuickActionRightMenu = () => {

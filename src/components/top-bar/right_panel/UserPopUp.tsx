@@ -62,7 +62,7 @@ export const UserPopUp = ({ parentRef, setPopUp }: props) => {
   }, []);
 
   return (
-    <div className="absolute flex flex-col w-[120px] gap-2 p-2 theme-background theme-border right-0 top-[49px] shadow-lg text-sm rounded-lg text-end">
+    <div className="absolute flex flex-col w-[120px] gap-2 p-2 theme-background theme-border right-0 top-[49px] shadow-lg text-sm rounded-lg text-end z-20">
       {USER_POP_UP_ROUTES.map((val, i) => {
         return (
           <IconRouteButton

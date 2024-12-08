@@ -138,4 +138,20 @@ html {
   .icon-button-style {
     @apply flex gap-2 items-center justify-between p-2 hover:theme-accent cursor-pointer rounded-lg transition-colors ease-in duration-300;
   }
+
+  .default-user-container {
+    @apply flex-1 flex flex-col gap-5 container mx-auto my-3;
+  }
+
+  .profile-pfp-border {
+    @apply border-[5px] border-background;
+  }
+
+  .dark .profile-pfp-border {
+    @apply border-[5px] border-dark-background;
+  }
+
+  .yellow-mode .profile-pfp-border {
+    @apply border-[5px] border-yellowMode-background;
+  }
 }

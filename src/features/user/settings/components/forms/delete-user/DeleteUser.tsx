@@ -64,7 +64,7 @@ export const DeleteUser = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(async (data) => await deleteUser(cb))}
+      onSubmit={handleSubmit(async () => await deleteUser(cb))}
       className="flex flex-col gap-10 theme-border w-[325px] h-auto p-4 py-5 rounded-lg shadow-lg"
     >
       <DeleteUserInput errors={errors} register={register} />

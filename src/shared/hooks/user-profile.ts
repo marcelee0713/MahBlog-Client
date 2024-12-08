@@ -5,7 +5,7 @@ import { ErrorObject } from "../ts/interfaces/global";
 import { getUserProfile } from "../api/user.profile.api";
 import { User } from "../ts/interfaces/user.interface";
 
-const useProfile = (user: User | null) => {
+const useProfile = (user: User | null = null) => {
   const { profile, setProfile, clearUserProfile } = useUserProfileStore();
 
   const { error, isLoading, mutate } = useSWR(

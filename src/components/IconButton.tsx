@@ -8,9 +8,12 @@ export const IconButton: React.FC<IconButtonType> = ({
   className,
 }) => {
   return (
-    <button onClick={onClick} className={`icon-button-style ${className}`}>
+    <button
+      onClick={onClick}
+      className={`icon-button-style text-sm ${className}`}
+    >
       <Icon size={20} />
-      <div className="text-sm">{text}</div>
+      <div>{text}</div>
     </button>
   );
 };

@@ -73,13 +73,13 @@ export const UserSettings = () => {
         {mode === "PASSWORD" && <ChangePassword />}
       </div>
 
-      {user?.authenticatedAs !== "LOCAL" && (
+      {user && user.authenticatedAs !== "LOCAL" && (
         <div className="flex flex-col gap-1 text-[13px] theme-accent-text-color">
           <div>
             You can not change anything in User Settings since you authenticated
             through <strong>{user?.authenticatedAs}</strong>.
           </div>
-          <div>We're sorry for the inconvenience.</div>
+          <div>We are sorry for the inconvenience.</div>
         </div>
       )}
     </div>

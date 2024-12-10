@@ -1,16 +1,29 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import { ProfileCover } from "./components/ProfileCover";
 import { ProfilePicture } from "./components/ProfilePicture";
 import { ProfileInformation } from "./components/ProfileInformation";
+import useProfileContent from "../../hooks/profile-hooks";
+import useProfile from "@/shared/hooks/user-profile";
 
-export const UserProfileContent = () => {
-  //TODO: Create a UserProfileContentState and Store it to (Zustand)
-  // The following properties is the same as UserProfileState, but with isEditable property
-  // So we know if the user is viewing the same profile.
+interface props {
+  userId?: string;
+}
 
-  //TODO: Change the structure of the /profile into /profile/[userId]
-  // and whenever the user tries to redirect himself into /profile, redirect him to /profile/userId <- currentlyLoggedIn
-  // Just check out next.config.js
+export const UserProfileContent = ({ userId }: props) => {
+  const { profile } = useProfile();
+
+  const { setProfile, setEditable } = useProfileContent(profile, userId);
+
+  useEffect(() => {
+    if (!userId || profile?.userId === userId) {
+      setProfile(profile);
+      setEditable(true);
+    }
+  }, [profile, userId]);
+
+  // TODO: Do the Update Operations of the Profile Picture, Cover, and Bio.
 
   return (
     <div className="flex flex-col h-[450px]">

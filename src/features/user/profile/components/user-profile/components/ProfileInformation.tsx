@@ -1,10 +1,10 @@
 import { Divider } from "@/components/Divider";
-import useProfile from "@/shared/hooks/user-profile";
 import React, { useState } from "react";
 import { ProfileNameAndOption } from "./ProfileNameAndOption";
+import useProfileContent from "../../../hooks/profile-hooks";
 
 export const ProfileInformation = () => {
-  const { profile } = useProfile();
+  const { profile, editable } = useProfileContent();
 
   const [bioPopUp, setBioPopUp] = useState(false);
   const [reportUserPopUp, setReportPopUp] = useState(false);
@@ -41,7 +41,7 @@ export const ProfileInformation = () => {
         <>
           <Divider />
           {/* This one is going to be replaced by an input. */}
-          <div className="text-sm">6 connections</div>
+          <div className="text-sm">{profile.bio}</div>
         </>
       )}
     </div>

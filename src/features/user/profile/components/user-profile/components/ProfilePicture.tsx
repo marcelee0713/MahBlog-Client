@@ -1,10 +1,10 @@
 import React from "react";
 import defaultPfp from "../../../../../../../public/svg/default-pfp.svg";
-import useProfile from "@/shared/hooks/user-profile";
 import Image from "next/image";
+import useProfileContent from "../../../hooks/profile-hooks";
 
 export const ProfilePicture = () => {
-  const { profile } = useProfile(null);
+  const { profile, editable } = useProfileContent();
 
   if (!profile) {
     return (

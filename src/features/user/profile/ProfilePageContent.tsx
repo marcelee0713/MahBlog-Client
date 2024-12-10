@@ -2,10 +2,14 @@
 import React from "react";
 import { UserProfileContent } from "./components/user-profile/UserProfile";
 
-export const ProfilePageContent = () => {
+interface props {
+  userId?: string;
+}
+
+export const ProfilePageContent = ({ userId }: props) => {
   return (
     <main className="default-user-container">
-      <UserProfileContent />
+      <UserProfileContent userId={userId} />
     </main>
   );
 };

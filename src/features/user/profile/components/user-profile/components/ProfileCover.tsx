@@ -1,10 +1,10 @@
-import useProfile from "@/shared/hooks/user-profile";
 import defaultCover from "../../../../../../../public/svg/default-cover.svg";
 import React from "react";
 import Image from "next/image";
+import useProfileContent from "../../../hooks/profile-hooks";
 
 export const ProfileCover = () => {
-  const { profile } = useProfile(null);
+  const { profile, editable } = useProfileContent();
 
   if (!profile) {
     return (

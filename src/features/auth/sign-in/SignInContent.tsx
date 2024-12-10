@@ -8,6 +8,7 @@ import { GoogleButton } from "./components/GoogleButton";
 import { AbsoluteButton } from "../components/AbsoluteButton";
 import { useRouter } from "next/navigation";
 import { SignInForm } from "./components/SignInForm";
+import { Suspense } from "react";
 
 export const SignInContent = () => {
   const router = useRouter();
@@ -19,7 +20,9 @@ export const SignInContent = () => {
         subText="Sign in to stay connected with us"
       />
 
-      <SignInForm />
+      <Suspense>
+        <SignInForm />
+      </Suspense>
 
       <Divider middleText="OR" />
 

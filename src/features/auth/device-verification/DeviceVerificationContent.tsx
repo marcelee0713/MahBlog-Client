@@ -3,7 +3,8 @@ import { Divider } from "@/components/Divider";
 import { UnderLineButton } from "@/components/UnderLineButton";
 import { ROUTES } from "@/shared/constants/routes";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
+
 import { AbsoluteButton } from "../components/AbsoluteButton";
 import { AuthDescription } from "../components/AuthDescription";
 import { DeviceVerifForm } from "./components/DeviceVerifForm";
@@ -18,7 +19,9 @@ export const DeviceVerificationContent = () => {
         subText="Oops, we don't recognize this device. We sent you an email device verification with six-digit code in it."
       />
 
-      <DeviceVerifForm />
+      <Suspense>
+        <DeviceVerifForm />
+      </Suspense>
 
       <Divider />
 

@@ -21,6 +21,8 @@ export const UserProfileContent = ({ userId }: props) => {
       setProfile(profile);
       setEditable(true);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, userId]);
 
   // TODO: Do the Update Operations of the Profile Picture, Cover, and Bio.

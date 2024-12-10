@@ -4,7 +4,7 @@ import Image from "next/image";
 import useProfileContent from "../../../hooks/profile-hooks";
 
 export const ProfilePicture = () => {
-  const { profile, editable } = useProfileContent();
+  const { profile } = useProfileContent();
 
   if (!profile) {
     return (

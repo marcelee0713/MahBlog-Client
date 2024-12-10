@@ -15,7 +15,7 @@ const useProfileContent = (
   const otherUser =
     currentProfile && userId && userId !== currentProfile.userId;
 
-  const { error } = useSWR(
+  const { error, mutate } = useSWR(
     otherUser ? `/api/user/profile/${userId}` : null,
     getUserProfile,
     {
@@ -41,6 +41,7 @@ const useProfileContent = (
     error,
     setProfile,
     setEditable,
+    refetch: mutate,
   };
 };
 

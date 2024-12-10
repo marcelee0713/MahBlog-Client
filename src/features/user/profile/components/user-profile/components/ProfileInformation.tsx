@@ -4,10 +4,13 @@ import { ProfileNameAndOption } from "./ProfileNameAndOption";
 import useProfileContent from "../../../hooks/profile-hooks";
 
 export const ProfileInformation = () => {
-  const { profile, editable } = useProfileContent();
+  const { profile } = useProfileContent();
 
   const [bioPopUp, setBioPopUp] = useState(false);
   const [reportUserPopUp, setReportPopUp] = useState(false);
+
+  console.log(bioPopUp);
+  console.log(reportUserPopUp);
 
   if (!profile) {
     return (

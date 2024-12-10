@@ -43,6 +43,8 @@ export const EmailChangeConfirmationContent = () => {
 
       setErrMsg("Request token not found. You might have modified the link.");
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

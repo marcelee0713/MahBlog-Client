@@ -14,14 +14,12 @@ export const UserButton = ({ profile }: props) => {
 
   if (profile) {
     return (
-      <div ref={buttonRef} className="relative rounded-full">
+      <div ref={buttonRef} className="relative rounded-full w-[40px] h-[40px]">
         {profile.profilePicture ? (
           <Image
             src={profile.profilePicture}
             alt={`${profile.firstName}'s pfp`}
-            width={40}
-            height={40}
-            quality={100}
+            fill
             className="rounded-full cursor-pointer"
             onClick={() => setPopUp(!popUp)}
           />

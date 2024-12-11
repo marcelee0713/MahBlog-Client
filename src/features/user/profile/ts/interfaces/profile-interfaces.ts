@@ -6,3 +6,7 @@ export interface UserProfileContentState {
   setEditable: (editable: boolean) => void;
   editable: boolean;
 }
+
+export interface PfpRes {
+  imageUrl: string;
+}

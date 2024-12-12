@@ -71,6 +71,10 @@ export const ChangeEmailSchema: ZodType<ChangeEmailFormData> = z
 export const DeleteUserSchema: ZodType<DeleteUserFormData> = z
   .object({
     confirmation: z.string().trim(),
+    password: z
+      .string()
+      .min(1, { message: "Please provide your current password" })
+      .optional(),
   })
   .refine((data) => data.confirmation === "delete my account", {
     message: `To continue, type "delete my account" :(`,

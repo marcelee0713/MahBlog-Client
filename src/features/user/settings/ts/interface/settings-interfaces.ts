@@ -22,4 +22,5 @@ export interface ChangeEmailFormData {
 
 export interface DeleteUserFormData {
   confirmation: string;
+  password?: string;
 }

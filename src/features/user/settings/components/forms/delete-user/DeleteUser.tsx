@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { DeleteUserSchema } from "../../../schemas/forms-schemas";
 import { DeleteUserFormData } from "../../../ts/interface/settings-interfaces";
-import { DeleteUserInput } from "./DeleteUserInput";
+import { DeleteUserInput, PassInput } from "./DeleteUserInput";
 import useProfile from "@/shared/hooks/user-profile";
 import { deleteUser } from "../../../api/delete-user-api";
 import { useRouter } from "next/navigation";
@@ -58,15 +58,31 @@ export const DeleteUser = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
+    setError,
   } = useForm<DeleteUserFormData>({
     resolver: zodResolver(DeleteUserSchema),
   });
 
   return (
     <form
-      onSubmit={handleSubmit(async () => await deleteUser(cb))}
+      onSubmit={handleSubmit(async () => {
+        const password = getValues("password");
+
+        if (user?.authenticatedAs === "LOCAL" && !password) {
+          return setError("password", {
+            message: "Please enter your current password",
+          });
+        }
+
+        await deleteUser(cb);
+      })}
       className="flex flex-col gap-10 theme-border w-[325px] h-auto p-4 py-5 rounded-lg shadow-lg"
     >
+      {user?.authenticatedAs === "LOCAL" && (
+        <PassInput errors={errors} register={register} />
+      )}
+
       <DeleteUserInput errors={errors} register={register} />
 
       <div className="flex flex-col gap-5 text-[13px] text-center theme-accent-text-color">

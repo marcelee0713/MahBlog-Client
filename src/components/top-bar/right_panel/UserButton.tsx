@@ -21,6 +21,7 @@ export const UserButton = ({ profile }: props) => {
             alt={`${profile.firstName}'s pfp`}
             fill
             className="rounded-full cursor-pointer"
+            style={{ objectFit: "cover" }}
             onClick={() => setPopUp(!popUp)}
           />
         ) : (

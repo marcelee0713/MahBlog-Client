@@ -2,6 +2,7 @@ import { Divider } from "@/components/Divider";
 import React, { useState } from "react";
 import { ProfileNameAndOption } from "./ProfileNameAndOption";
 import useProfileContent from "../../../hooks/profile-hooks";
+import { BioHandler } from "./BioHandler";
 
 export const ProfileInformation = () => {
   const { profile } = useProfileContent();
@@ -40,13 +41,11 @@ export const ProfileInformation = () => {
 
       {/*TODO: When the user clicked the onClickEdit, it will either replace the current 
       component if a bio is present, and if the bio is not, then just place the BioForm. */}
-      {profile.bio && (
-        <>
-          <Divider />
-          {/* This one is going to be replaced by an input. */}
-          <div className="text-sm">{profile.bio}</div>
-        </>
-      )}
+      <BioHandler
+        bio={profile.bio}
+        bioPopUp={bioPopUp}
+        setPopUp={setBioPopUp}
+      />
     </div>
   );
 };

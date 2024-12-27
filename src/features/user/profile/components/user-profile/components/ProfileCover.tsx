@@ -4,13 +4,13 @@ import Image from "next/image";
 import useProfileContent from "../../../hooks/profile-hooks";
 import useProfile from "@/shared/hooks/user-profile";
 import useUser from "@/shared/hooks/user";
-import { ImageOperationHandler } from "./ImageOperationHandler";
 import { CallbacksInterface } from "@/shared/ts/interfaces/global";
 import { toast } from "sonner";
 import {
   deleteProfileCover,
   updateProfileCover,
 } from "../../../api/profile-cover-api";
+import { ImageOperationHandler } from "./ImageOperationHandler";
 
 export const ProfileCover = () => {
   const [processing, setProcessing] = useState(false);
@@ -53,11 +53,12 @@ export const ProfileCover = () => {
   return (
     <div className="relative flex-1 ">
       <ImageOperationHandler
+        id="cover"
         cover={profile.profileCover}
         editable={editable}
         onUpload={async (file: File) => await updateProfileCover(file, cb)}
         onRemove={async () =>
-          await deleteProfileCover(profile.profilePicture, cb)
+          await deleteProfileCover(profile.profileCover, cb)
         }
         processing={processing}
       />

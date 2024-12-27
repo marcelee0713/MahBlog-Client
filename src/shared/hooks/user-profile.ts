@@ -28,7 +28,14 @@ const useProfile = (user: User | null = null) => {
     }
   );
 
-  return { profile, setProfile, error, isLoading, fetchProfile: mutate };
+  return {
+    profile,
+    setProfile,
+    error,
+    isLoading,
+    fetchProfile: mutate,
+    clearUserProfile,
+  };
 };
 
 export default useProfile;

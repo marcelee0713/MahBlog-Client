@@ -1,6 +1,7 @@
 import React from "react";
 
 interface props {
+  id: string;
   onRemove: () => void;
   onUpload: (file: File) => void;
   cover: string | null;
@@ -10,6 +11,7 @@ interface props {
 }
 
 export const ImageOperationHandler: React.FC<props> = ({
+  id,
   onUpload,
   onRemove,
   cover,
@@ -33,13 +35,13 @@ export const ImageOperationHandler: React.FC<props> = ({
         {cover ? (
           <>
             <label
-              htmlFor="changeInput"
+              id={id}
               className="font-bold opacity-0 group-hover:opacity-100 cursor-pointer"
             >
               Change
             </label>
             <input
-              id="changeInput"
+              id={id}
               type="file"
               accept="image/*"
               onChange={handleFileChange}
@@ -58,13 +60,13 @@ export const ImageOperationHandler: React.FC<props> = ({
         ) : (
           <>
             <label
-              htmlFor="uploadInput"
+              htmlFor={id}
               className="font-bold opacity-0 group-hover:opacity-100 cursor-pointer"
             >
               Upload
             </label>
             <input
-              id="uploadInput"
+              id={id}
               type="file"
               accept="image/*"
               onChange={handleFileChange}

@@ -3,6 +3,7 @@ import { ResponseBody } from "@/shared/ts/interfaces/global";
 import { User } from "@/shared/ts/interfaces/user.interface";
 import { ParseRawError } from "@/shared/utils";
 import { cookies } from "next/headers";
+import { NextRequest } from "next/server";
 
 export async function GET() {
   const cookieStore = await cookies();
@@ -52,7 +53,9 @@ export async function GET() {
   });
 }
 
-export async function DELETE() {
+export async function DELETE(req: NextRequest) {
+  const body = await req.json();
+
   const cookieStore = await cookies();
 
   const token = cookieStore.get("token")?.value ?? "";
@@ -60,6 +63,7 @@ export async function DELETE() {
   const deviceId = cookieStore.get("device-id")?.value ?? "";
 
   const res = await fetch(`${apiUrl}/user/`, {
+    body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

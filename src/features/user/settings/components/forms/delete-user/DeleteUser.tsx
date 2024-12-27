@@ -66,7 +66,7 @@ export const DeleteUser = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(async () => {
+      onSubmit={handleSubmit(async (data) => {
         const password = getValues("password");
 
         if (user?.authenticatedAs === "LOCAL" && !password) {
@@ -75,7 +75,7 @@ export const DeleteUser = () => {
           });
         }
 
-        await deleteUser(cb);
+        await deleteUser(data, cb);
       })}
       className="flex flex-col gap-10 theme-border w-[325px] h-auto p-4 py-5 rounded-lg shadow-lg"
     >

@@ -2,11 +2,13 @@ import { IconRouteButton } from "@/components/IconRouteButton";
 import { signOutUser } from "@/shared/api/user.api";
 import { ROUTES, USER_POP_UP_ROUTES } from "@/shared/constants/routes";
 import useUser from "@/shared/hooks/user";
+import useProfile from "@/shared/hooks/user-profile";
 import { CallbacksInterface } from "@/shared/ts/interfaces/global";
 import { useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import { toast } from "sonner";
+import { mutate } from "swr";
 
 interface props {
   parentRef: React.RefObject<HTMLDivElement>;
@@ -16,7 +18,9 @@ interface props {
 export const UserPopUp = ({ parentRef, setPopUp }: props) => {
   const router = useRouter();
 
-  const { clearUser, toggleFetch } = useUser();
+  const { setUser, toggleFetch } = useUser();
+
+  const { setProfile } = useProfile();
 
   const cb: CallbacksInterface = {
     onLoading() {
@@ -31,7 +35,11 @@ export const UserPopUp = ({ parentRef, setPopUp }: props) => {
 
       toggleFetch(false);
 
-      clearUser();
+      setUser(null);
+
+      setProfile(null);
+
+      mutate(() => true, undefined, false);
     },
     onSuccess() {
       toast.dismiss();
@@ -41,7 +49,9 @@ export const UserPopUp = ({ parentRef, setPopUp }: props) => {
 
       toggleFetch(false);
 
-      clearUser();
+      setUser(null);
+
+      setProfile(null);
     },
   };
 

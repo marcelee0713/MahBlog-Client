@@ -12,4 +12,6 @@ export const UpdateUserUseCaseArr = [
 
 export type UpdateUserUseCase = (typeof UpdateUserUseCaseArr)[number];
 
-export type AuthenticatedAs = "LOCAL" | "GOOGLE";
+export const AuthenticatedAsArr = ["LOCAL", "GOOGLE"] as const;
+
+export type AuthenticatedAs = (typeof AuthenticatedAsArr)[number];

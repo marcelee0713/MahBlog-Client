@@ -1,4 +1,7 @@
-import { UpdateUserUseCase } from "@/shared/ts/types/user.types";
+import {
+  AuthenticatedAs,
+  UpdateUserUseCase,
+} from "@/shared/ts/types/user.types";
 
 export interface ChangeNameFormData {
   firstName: string;
@@ -23,4 +26,5 @@ export interface ChangeEmailFormData {
 export interface DeleteUserFormData {
   confirmation: string;
   password?: string;
+  authAs: AuthenticatedAs;
 }

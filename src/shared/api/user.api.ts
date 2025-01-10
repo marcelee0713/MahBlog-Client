@@ -39,3 +39,24 @@ export const signOutUser = async ({
 
   return onSuccess(null);
 };
+
+export const deleteOAuthUser = async (
+  { onLoading, onSuccess, onError }: CallbacksInterface,
+  token: string
+): Promise<void> => {
+  onLoading();
+
+  const res = await fetch("/api/user/goodbye", {
+    body: JSON.stringify({
+      token,
+    }),
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) return onError(await ParseError(res));
+
+  return onSuccess(null);
+};

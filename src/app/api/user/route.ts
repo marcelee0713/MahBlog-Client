@@ -1,4 +1,5 @@
 import apiUrl from "@/config";
+import { DeleteUserFormData } from "@/features/user/settings/ts/interface/settings-interfaces";
 import { ResponseBody } from "@/shared/ts/interfaces/global";
 import { User } from "@/shared/ts/interfaces/user.interface";
 import { ParseRawError } from "@/shared/utils";
@@ -54,7 +55,7 @@ export async function GET() {
 }
 
 export async function DELETE(req: NextRequest) {
-  const body = await req.json();
+  const body: DeleteUserFormData = await req.json();
 
   const cookieStore = await cookies();
 
@@ -75,7 +76,7 @@ export async function DELETE(req: NextRequest) {
 
   if (!res.ok) return await ParseRawError(res);
 
-  cookieStore.delete("token");
+  if (body.authAs === "LOCAL") cookieStore.delete("token");
 
   return new Response(JSON.stringify({}), {
     status: res.status,

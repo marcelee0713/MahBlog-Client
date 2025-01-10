@@ -35,13 +35,13 @@ export const ImageOperationHandler: React.FC<props> = ({
         {cover ? (
           <>
             <label
-              id={id}
+              htmlFor={id + "change"}
               className="font-bold opacity-0 group-hover:opacity-100 cursor-pointer"
             >
               Change
             </label>
             <input
-              id={id}
+              id={id + "change"}
               type="file"
               accept="image/*"
               onChange={handleFileChange}
@@ -60,13 +60,13 @@ export const ImageOperationHandler: React.FC<props> = ({
         ) : (
           <>
             <label
-              htmlFor={id}
+              htmlFor={id + "upload"}
               className="font-bold opacity-0 group-hover:opacity-100 cursor-pointer"
             >
               Upload
             </label>
             <input
-              id={id}
+              id={id + "upload"}
               type="file"
               accept="image/*"
               onChange={handleFileChange}

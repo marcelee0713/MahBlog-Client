@@ -5,7 +5,10 @@ import {
   ChangePasswordFormData,
   DeleteUserFormData,
 } from "../ts/interface/settings-interfaces";
-import { UpdateUserUseCase } from "@/shared/ts/types/user.types";
+import {
+  AuthenticatedAsArr,
+  UpdateUserUseCase,
+} from "@/shared/ts/types/user.types";
 
 export const ChangeNameSchema: ZodType<ChangeNameFormData> = z.object({
   firstName: z
@@ -75,6 +78,7 @@ export const DeleteUserSchema: ZodType<DeleteUserFormData> = z
       .string()
       .min(1, { message: "Please provide your current password" })
       .optional(),
+    authAs: z.enum(AuthenticatedAsArr),
   })
   .refine((data) => data.confirmation === "delete my account", {
     message: `To continue, type "delete my account" :(`,

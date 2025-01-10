@@ -27,13 +27,27 @@ export const DeleteUser = () => {
     },
 
     onSuccess() {
+      if (user?.authenticatedAs !== "LOCAL") {
+        setProcessing(false);
+
+        toast.dismiss();
+
+        toast.success(
+          `We have successfully sent you an email for user deletion verification.`
+        );
+
+        reset();
+
+        return;
+      }
+
       setProcessing(false);
+
+      toast.dismiss();
 
       toast.success(
         `Goodbye, hope to see you come back ${profile?.firstName}...`
       );
-
-      toast.dismiss();
 
       clearUser();
 
@@ -62,6 +76,9 @@ export const DeleteUser = () => {
     setError,
   } = useForm<DeleteUserFormData>({
     resolver: zodResolver(DeleteUserSchema),
+    defaultValues: {
+      authAs: user?.authenticatedAs,
+    },
   });
 
   return (
@@ -75,7 +92,7 @@ export const DeleteUser = () => {
           });
         }
 
-        await deleteUser(data, cb);
+        if (user) await deleteUser(data, cb);
       })}
       className="flex flex-col gap-10 theme-border w-[325px] h-auto p-4 py-5 rounded-lg shadow-lg"
     >
@@ -91,9 +108,18 @@ export const DeleteUser = () => {
           confirm.
         </div>
 
-        <div>
-          This will delete every blog, drafts, and etc.. are you still sure?
-        </div>
+        {user?.authenticatedAs === "LOCAL" && (
+          <div>
+            This will delete every blog, drafts, and etc.. are you still sure?
+          </div>
+        )}
+
+        {user?.authenticatedAs !== "LOCAL" && (
+          <span>
+            For an additional confirmation, we will send an email to proceed the
+            process.
+          </span>
+        )}
 
         <Button text="Submit" type="submit" disabled={processing} />
       </div>

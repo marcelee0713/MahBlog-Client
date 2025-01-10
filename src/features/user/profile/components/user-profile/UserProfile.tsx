@@ -25,8 +25,6 @@ export const UserProfileContent = ({ userId }: props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile, userId]);
 
-  // TODO: Do the operation of updating a Bio
-
   return (
     <div className="flex flex-col h-[450px]">
       <ProfileCover />
